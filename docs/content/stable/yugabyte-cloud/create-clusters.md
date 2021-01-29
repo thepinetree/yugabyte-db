@@ -14,8 +14,7 @@ isTocNested: true
 showAsideToc: true
 ---
 
-As a fully-managed YugabyteDB-as-a-service, Yugabyte Cloud makes it easy for you to create a YugabyteDB cluster without
-having to get deep into details you do not want to focus on.
+As a fully-managed YugabyteDB-as-a-service, Yugabyte Cloud makes it easy for you to create a YugabyteDB cluster without having to get deep into details you do not want to focus on.
 
 ## Create a cluster
 
@@ -40,12 +39,11 @@ Follow the steps here to create your first cluster:
 
     {{< /note >}}
 
-2. Click **Create Cluster**. The **Clusters** page appears with the provisioning of your new cluster in progress. When the **State** changes to `Ready`,
-your cluster is ready for your use.
+2. Click **Create Cluster**. The **Clusters** page appears with the provisioning of your new cluster in progress. When the **State** changes to `Ready`, your cluster is ready for use.
 
 ![Free Tier cluster ready](/images/deploy/yugabyte-cloud/free-tier-cluster-ready.png)
 
 ## Next steps
 
-With your Free Tier cluster ready for use, you can click **Go to cluster** to begin exploring the information available in the Yugabyte Cloud Console.
+With your Free Tier cluster ready for use, click **Go to cluster** to begin exploring the information available in the Yugabyte Cloud Console.
 You can also [create databases](../create-databases/), [manage database access](../manage-access/), and [connect to your cluster with YugabyteDB CLIs and third party tools](../connect-to-clusters/).
