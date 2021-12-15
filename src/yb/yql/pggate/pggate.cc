@@ -563,7 +563,6 @@ Status PgApiImpl::ExecDropTablegroup(PgStatement *handle) {
   return down_cast<PgDropTablegroup*>(handle)->Exec();
 }
 
-
 //--------------------------------------------------------------------------------------------------
 
 Status PgApiImpl::NewCreateTable(const char *database_name,

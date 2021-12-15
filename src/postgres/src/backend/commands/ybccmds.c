@@ -145,7 +145,6 @@ YBCDropTablegroup(Oid grpoid)
 	HandleYBStatus(YBCPgExecDropTablegroup(handle));
 }
 
-
 /* ------------------------------------------------------------------------- */
 /*  Table Functions. */
 

@@ -167,6 +167,7 @@ typedef ArrayType Acl;
 #define ACL_ALL_RIGHTS_TABLEGROUP	(ACL_CREATE)
 #define ACL_ALL_RIGHTS_TABLESPACE	(ACL_CREATE)
 #define ACL_ALL_RIGHTS_TYPE			(ACL_USAGE)
+#define ACL_ALL_RIGHTS_PREPARED_XACT  (ACL_CREATE)
 
 /* operation codes for pg_*_aclmask */
 typedef enum

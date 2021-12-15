@@ -294,6 +294,7 @@ YBCStatus YBCPgNewDropTablegroup(YBCPgOid database_oid,
                                               tablegroup_oid,
                                               handle));
 }
+
 YBCStatus YBCPgExecDropTablegroup(YBCPgStatement handle) {
   return ToYBCStatus(pgapi->ExecDropTablegroup(handle));
 }

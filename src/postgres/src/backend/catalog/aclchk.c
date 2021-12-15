@@ -272,9 +272,6 @@ restrict_and_check_grant(bool is_grant, AclMode avail_goptions, bool all_privs,
 		case OBJECT_SCHEMA:
 			whole_mask = ACL_ALL_RIGHTS_SCHEMA;
 			break;
-		case OBJECT_YBTABLEGROUP:
-			whole_mask = ACL_ALL_RIGHTS_TABLEGROUP;
-			break;
 		case OBJECT_TABLESPACE:
 			whole_mask = ACL_ALL_RIGHTS_TABLESPACE;
 			break;
@@ -290,6 +287,12 @@ restrict_and_check_grant(bool is_grant, AclMode avail_goptions, bool all_privs,
 			return ACL_NO_RIGHTS;
 		case OBJECT_TYPE:
 			whole_mask = ACL_ALL_RIGHTS_TYPE;
+			break;
+		case OBJECT_YBTABLEGROUP:
+			whole_mask = ACL_ALL_RIGHTS_TABLEGROUP;
+			break;
+		case OBJECT_YBPREPAREDXACT:
+			whole_mask = ACL_ALL_RIGHTS_PREPARED_XACT;
 			break;
 		default:
 			elog(ERROR, "unrecognized object type: %d", objtype);
@@ -498,10 +501,7 @@ ExecuteGrantStmt(GrantStmt *stmt)
 			all_privileges = ACL_ALL_RIGHTS_FUNCTION;
 			errormsg = gettext_noop("invalid privilege type %s for routine");
 			break;
-		case OBJECT_YBTABLEGROUP:
-			all_privileges = ACL_ALL_RIGHTS_TABLEGROUP;
-			errormsg = gettext_noop("invalid privilege type %s for tablegroup");
-			break;
+
 		case OBJECT_TABLESPACE:
 			all_privileges = ACL_ALL_RIGHTS_TABLESPACE;
 			errormsg = gettext_noop("invalid privilege type %s for tablespace");
@@ -517,6 +517,14 @@ ExecuteGrantStmt(GrantStmt *stmt)
 		case OBJECT_FOREIGN_SERVER:
 			all_privileges = ACL_ALL_RIGHTS_FOREIGN_SERVER;
 			errormsg = gettext_noop("invalid privilege type %s for foreign server");
+			break;
+		case OBJECT_YBTABLEGROUP:
+			all_privileges = ACL_ALL_RIGHTS_TABLEGROUP;
+			errormsg = gettext_noop("invalid privilege type %s for tablegroup");
+			break;
+		case OBJECT_YBPREPAREDXACT:
+			all_privileges = ACL_ALL_RIGHTS_PREPARED_XACT;
+			errormsg = gettext_noop("invalid privilege type %s for prepared transaction");
 			break;
 		default:
 			elog(ERROR, "unrecognized GrantStmt.objtype: %d",
@@ -617,11 +625,14 @@ ExecGrantStmt_oids(InternalGrant *istmt)
 		case OBJECT_SCHEMA:
 			ExecGrant_Namespace(istmt);
 			break;
+		case OBJECT_TABLESPACE:
+			ExecGrant_Tablespace(istmt);
+			break;
 		case OBJECT_YBTABLEGROUP:
 			ExecGrant_Tablegroup(istmt);
 			break;
-		case OBJECT_TABLESPACE:
-			ExecGrant_Tablespace(istmt);
+		case OBJECT_YBPREPAREDXACT:
+			ExecGrant_Tablegroup(istmt);
 			break;
 		default:
 			elog(ERROR, "unrecognized GrantStmt.objtype: %d",

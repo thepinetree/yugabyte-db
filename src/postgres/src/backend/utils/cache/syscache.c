@@ -999,6 +999,18 @@ static const struct cachedesc cacheinfo[] = {
 		},
 		4
 	},
+	// TODO(Deepayan): Actually determine keys.
+	{YbPreparedXactRelationId,	/* YBPREPAREDXACTOID */
+		YbPreparedXactIndexId,
+		1,
+		{
+			Anum_pg_yb_prepared_xact_global_name,
+			0,
+			0,
+			0,
+		},
+		4
+	},
 };
 
 typedef struct YBPinnedObjectKey

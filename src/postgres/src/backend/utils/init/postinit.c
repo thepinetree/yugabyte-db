@@ -1038,6 +1038,9 @@ InitPostgres(const char *in_dbname, Oid dboid, const char *username,
 		HandleYBStatus(YBCPgTableExists(MyDatabaseId,
 										YbTablegroupRelationId,
 										&YbTablegroupCatalogExists));
+		HandleYBStatus(YBCPgTableExists(MyDatabaseId,
+										YbPreparedXactRelationId,
+										&YbPreparedXactCatalogExists))
 	}
 
 	RelationCacheInitializePhase3();
